@@ -3,13 +3,11 @@ import streamlit as st
 import pandas as pd
 
 # Simular datos desde RooBIA
-data = [
-    {"titulo": "Depto Ronda Santo Domingo", "precio": "22 UF (≈ $803.000 CLP)", "precio_clp": 803000, "comuna": "Santiago", "link": "https://portalinmobiliario.com/MLC-123"},
-    {"titulo": "Casa Ñuñoa Vista Oriente", "precio": "$720.000 CLP", "precio_clp": 720000, "comuna": "Ñuñoa", "link": "https://portalinmobiliario.com/MLC-456"},
-    {"titulo": "Depto Providencia Metro", "precio": "24 UF (≈ $876.000 CLP)", "precio_clp": 876000, "comuna": "Providencia", "link": "https://portalinmobiliario.com/MLC-789"},
-]
-
-df = pd.DataFrame(data)
+try:
+    df = pd.read_csv("resultados_2025.csv")
+except FileNotFoundError:
+    st.warning("⚠️ No se encontró el archivo resultados_2025.csv. Sube uno nuevo al repositorio.")
+    st.stop()
 
 # ------------------ UI Streamlit ------------------
 
